@@ -6,7 +6,11 @@ function sendRequest(method, url, data) {
 
         xhr.onload = function () {
             // console.log(this.response);
-            resolve(this.response);
+            if(this.status>=400){
+                reject("Application Specific Error");
+            }else{
+                resolve(this.response);
+            }
         };
 
         xhr.onerror = function () {
@@ -22,6 +26,9 @@ function sendRequest(method, url, data) {
 
     return promise;
 }
+
+// Application_Specific_Error_URL = "https://jsonplaceholder.typicode.com/todos/text";
+
 
 function getData() {
     sendRequest("GET", "https://jsonplaceholder.typicode.com/todos/1")
