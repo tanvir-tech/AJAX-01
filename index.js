@@ -9,6 +9,10 @@ function sendRequest(method, url, data) {
             resolve(this.response);
         };
 
+        xhr.onerror = function () {
+            reject("There is an error");
+        };
+
         xhr.open(method, url);
 
         xhr.responseType = "json";
@@ -20,9 +24,12 @@ function sendRequest(method, url, data) {
 }
 
 function getData() {
-    sendRequest("GET", "https://jsonplaceholder.typicode.com/todos/1").then((responseData) => {
-        console.log(responseData);
-    });
+    sendRequest("GET", "https://jsonplaceholder.typicode.com/todos/1")
+        .then((responseData) => {
+            console.log(responseData);
+        }).catch((error) => {
+            console.log(error);
+        });
 }
 
 function setData() {
@@ -37,6 +44,18 @@ function setData() {
         console.log(responseData);
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $("#get").click(function (e) {
