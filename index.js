@@ -16,27 +16,13 @@ function sendRequest(method, url) {
         xhr.send();
     });
 
-
     return promise;
 }
 
-
 function getData() {
-    // alert("get data");
-    // const xhr = new XMLHttpRequest();
-
-    // xhr.onload = function(){
-    //     console.log(this.responseText);
-    // };
-
-    // xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
-
-    // xhr.send();
-
     sendRequest("GET","https://jsonplaceholder.typicode.com/todos/1").then((responseData)=>{
         console.log(responseData);
     });
-
 }
 
 function setData() {
