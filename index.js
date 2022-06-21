@@ -7,7 +7,7 @@ function sendRequest(method, url, data) {
         xhr.onload = function () {
             // console.log(this.response);
             if(this.status>=400){
-                reject("Application Specific Error");
+                reject(`Application Specific Error ${this.status}`); //back-tick for string formation
             }else{
                 resolve(this.response);
             }
@@ -31,7 +31,7 @@ function sendRequest(method, url, data) {
 
 
 function getData() {
-    sendRequest("GET", "https://jsonplaceholder.typicode.com/todos/1")
+    sendRequest("GET", "https://jsonplaceholder.typicode.com/todos/text")
         .then((responseData) => {
             console.log(responseData);
         }).catch((error) => {
